@@ -20,19 +20,67 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#F5F7FA",
+        background: "#FFFFFF", // Updated to match brand identity
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#4A1D75", // Updated to Deep Purple
+          DEFAULT: "#4A1D75", // Royal Purple (Primary)
+          50: "#F5F0FA",
+          100: "#E9DEF5",
+          200: "#D3BDEB",
+          300: "#BD9CE0",
+          400: "#A77BD6",
+          500: "#915ACC",
+          600: "#7B39C2",
+          700: "#652FA3",
+          800: "#4A1D75", // Base color
+          900: "#341452",
+          950: "#220D36",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#0F3460", // Updated to Royal Blue
+          DEFAULT: "#0F3460", // Deep Blue (Secondary)
+          50: "#E6EEF7",
+          100: "#CCDDEF",
+          200: "#99BBDF",
+          300: "#6699CF",
+          400: "#3377BF",
+          500: "#0055AF",
+          600: "#0044A0",
+          700: "#003380",
+          800: "#0F3460", // Base color
+          900: "#001140",
+          950: "#000B2B",
           foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#2E8B57", // Updated to Green
-          foreground: "#FFFFFF",
+          DEFAULT: "#8ECB85", // Light Green (Accent)
+          50: "#F5FAF4",
+          100: "#EBF5E9",
+          200: "#D7EBD3",
+          300: "#C3E1BD",
+          400: "#AFD7A7",
+          500: "#8ECB85", // Base color
+          600: "#6DB962",
+          700: "#4C9740",
+          800: "#2B752E",
+          900: "#0A531C",
+          950: "#043210",
+          foreground: "#000000",
+        },
+        neutral: {
+          DEFAULT: "#F0F4F8", // Gray (Neutral)
+          50: "#FFFFFF",
+          100: "#F0F4F8", // Base color
+          200: "#D9E2EC",
+          300: "#BCCCDC",
+          400: "#9FB3C8",
+          500: "#829AB1",
+          600: "#627D98",
+          700: "#486581",
+          800: "#334E68",
+          900: "#243B53",
+          950: "#102A43",
+          foreground: "#000000",
         },
         cream: {
           DEFAULT: "#FFF8E1", // Added Cream color
@@ -43,8 +91,8 @@ module.exports = {
           foreground: "#000000",
         },
         success: {
-          DEFAULT: "#2E8B57",
-          foreground: "#FFFFFF",
+          DEFAULT: "#8ECB85", // Updated to match accent color
+          foreground: "#000000",
         },
         warning: {
           DEFAULT: "#FFA000",
@@ -97,4 +145,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}      
+}            

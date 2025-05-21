@@ -88,6 +88,22 @@ export interface Grade {
   maxScore: number;
   remarks?: string;
   date: Date;
+  subject?: {
+    id: string;
+    name: string;
+    code: string;
+    description: string;
+    grade: string;
+  };
+  student?: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: 'student';
+    grade: string;
+    class: string;
+  };
 }
 
 export interface Fee {
@@ -119,4 +135,4 @@ export interface Message {
   read: boolean;
   createdAt: Date;
   updatedAt: Date;
-} 
+}  
