@@ -113,6 +113,20 @@ export default function AdminSettingsPage() {
             General
           </Button>
           <Button
+            variant={activeTab === 'appearance' ? "default" : "ghost"}
+            onClick={() => setActiveTab('appearance')}
+            className="flex-1"
+          >
+            Appearance
+          </Button>
+          <Button
+            variant={activeTab === 'legal' ? "default" : "ghost"}
+            onClick={() => setActiveTab('legal')}
+            className="flex-1"
+          >
+            Legal Documents
+          </Button>
+          <Button
             variant={activeTab === 'notifications' ? "default" : "ghost"}
             onClick={() => setActiveTab('notifications')}
             className="flex-1"
@@ -642,6 +656,349 @@ export default function AdminSettingsPage() {
               </div>
             </CardContent>
           </Card>
+        )}
+        
+        {activeTab === 'legal' && (
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Legal Document Management</CardTitle>
+                <CardDescription>
+                  Manage and customize legal documents for your school
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-4 border rounded-lg p-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-medium">Privacy Policy</h3>
+                      <Button variant="outline" size="sm" asChild>
+                        <a href="/privacy-policy" target="_blank">View</a>
+                      </Button>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Explains how your school collects, uses, and protects user data.
+                    </p>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-gray-500">Last updated: May 21, 2025</span>
+                      <Button variant="ghost" size="sm" asChild>
+                        <a href="/privacy-policy">Edit</a>
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4 border rounded-lg p-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-medium">Terms of Service</h3>
+                      <Button variant="outline" size="sm" asChild>
+                        <a href="/terms-of-service" target="_blank">View</a>
+                      </Button>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Outlines the rules and guidelines for using your school's services.
+                    </p>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-gray-500">Last updated: May 21, 2025</span>
+                      <Button variant="ghost" size="sm" asChild>
+                        <a href="/terms-of-service">Edit</a>
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4 border rounded-lg p-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-medium">Contact Information</h3>
+                      <Button variant="outline" size="sm" asChild>
+                        <a href="/contact-us" target="_blank">View</a>
+                      </Button>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Manage your school's contact details and communication channels.
+                    </p>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-gray-500">Last updated: May 21, 2025</span>
+                      <Button variant="ghost" size="sm" asChild>
+                        <a href="/contact-us">Edit</a>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="border-t pt-6">
+                  <h3 className="text-lg font-medium mb-4">Legal Document Settings</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium">Require Terms Acceptance</p>
+                          <p className="text-sm text-gray-600">Users must accept terms before using the system</p>
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="requireTerms"
+                          defaultChecked
+                          className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium">Notify on Updates</p>
+                          <p className="text-sm text-gray-600">Notify users when legal documents are updated</p>
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="notifyUpdates"
+                          defaultChecked
+                          className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium">Two-Person Approval</p>
+                          <p className="text-sm text-gray-600">Require two administrators to approve document changes</p>
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="twoPersonApproval"
+                          defaultChecked
+                          className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium">Compliance Tracking</p>
+                          <p className="text-sm text-gray-600">Track user acceptance of legal documents</p>
+                        </div>
+                        <input
+                          type="checkbox"
+                          id="complianceTracking"
+                          defaultChecked
+                          className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+        
+        {activeTab === 'appearance' && (
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Appearance</CardTitle>
+                <CardDescription>
+                  Customize the look and feel of your school system
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="primaryColor">Primary Color</Label>
+                    <div className="flex items-center gap-2">
+                      <Input 
+                        id="primaryColor" 
+                        type="color"
+                        value={schoolSettings.schoolColors.primary}
+                        onChange={(e) => setSchoolSettings({
+                          ...schoolSettings, 
+                          schoolColors: {...schoolSettings.schoolColors, primary: e.target.value}
+                        })}
+                        className="w-12 h-10 p-1"
+                      />
+                      <Input 
+                        value={schoolSettings.schoolColors.primary}
+                        onChange={(e) => setSchoolSettings({
+                          ...schoolSettings, 
+                          schoolColors: {...schoolSettings.schoolColors, primary: e.target.value}
+                        })}
+                        className="flex-1"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="secondaryColor">Secondary Color</Label>
+                    <div className="flex items-center gap-2">
+                      <Input 
+                        id="secondaryColor" 
+                        type="color"
+                        value={schoolSettings.schoolColors.secondary}
+                        onChange={(e) => setSchoolSettings({
+                          ...schoolSettings, 
+                          schoolColors: {...schoolSettings.schoolColors, secondary: e.target.value}
+                        })}
+                        className="w-12 h-10 p-1"
+                      />
+                      <Input 
+                        value={schoolSettings.schoolColors.secondary}
+                        onChange={(e) => setSchoolSettings({
+                          ...schoolSettings, 
+                          schoolColors: {...schoolSettings.schoolColors, secondary: e.target.value}
+                        })}
+                        className="flex-1"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="accentColor">Accent Color</Label>
+                    <div className="flex items-center gap-2">
+                      <Input 
+                        id="accentColor" 
+                        type="color"
+                        value={schoolSettings.schoolColors.accent}
+                        onChange={(e) => setSchoolSettings({
+                          ...schoolSettings, 
+                          schoolColors: {...schoolSettings.schoolColors, accent: e.target.value}
+                        })}
+                        className="w-12 h-10 p-1"
+                      />
+                      <Input 
+                        value={schoolSettings.schoolColors.accent}
+                        onChange={(e) => setSchoolSettings({
+                          ...schoolSettings, 
+                          schoolColors: {...schoolSettings.schoolColors, accent: e.target.value}
+                        })}
+                        className="flex-1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="schoolLogo">School Logo</Label>
+                  <div className="flex items-center gap-4">
+                    <div className="h-20 w-20 rounded-md border flex items-center justify-center bg-muted">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-10 w-10 text-muted-foreground"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                    <Button variant="outline">Upload New Logo</Button>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 pt-4 border-t">
+                  <h3 className="text-lg font-medium">Theme Settings</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex items-center justify-between rounded-md border p-4">
+                      <div className="space-y-0.5">
+                        <label className="text-sm font-medium" htmlFor="darkMode">
+                          Dark Mode
+                        </label>
+                        <p className="text-xs text-muted-foreground">
+                          Enable dark mode for the system
+                        </p>
+                      </div>
+                      <input
+                        type="checkbox"
+                        id="darkMode"
+                        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                      />
+                    </div>
+                    
+                    <div className="flex items-center justify-between rounded-md border p-4">
+                      <div className="space-y-0.5">
+                        <label className="text-sm font-medium" htmlFor="highContrast">
+                          High Contrast Mode
+                        </label>
+                        <p className="text-xs text-muted-foreground">
+                          Increase contrast for better accessibility
+                        </p>
+                      </div>
+                      <input
+                        type="checkbox"
+                        id="highContrast"
+                        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                      />
+                    </div>
+                    
+                    <div className="flex items-center justify-between rounded-md border p-4">
+                      <div className="space-y-0.5">
+                        <label className="text-sm font-medium" htmlFor="animations">
+                          Animations
+                        </label>
+                        <p className="text-xs text-muted-foreground">
+                          Enable animations throughout the system
+                        </p>
+                      </div>
+                      <input
+                        type="checkbox"
+                        id="animations"
+                        defaultChecked
+                        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                      />
+                    </div>
+                    
+                    <div className="flex items-center justify-between rounded-md border p-4">
+                      <div className="space-y-0.5">
+                        <label className="text-sm font-medium" htmlFor="reducedMotion">
+                          Reduced Motion
+                        </label>
+                        <p className="text-xs text-muted-foreground">
+                          Reduce motion for accessibility
+                        </p>
+                      </div>
+                      <input
+                        type="checkbox"
+                        id="reducedMotion"
+                        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 pt-4 border-t">
+                  <h3 className="text-lg font-medium">Typography</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="fontFamily">Font Family</Label>
+                      <select
+                        id="fontFamily"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <option value="inter">Inter (Sans-serif)</option>
+                        <option value="merrifield">Merrifield (Serif)</option>
+                        <option value="georgia">Georgia (Serif)</option>
+                        <option value="system">System Default</option>
+                      </select>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="fontSize">Base Font Size</Label>
+                      <select
+                        id="fontSize"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <option value="14">14px</option>
+                        <option value="16" selected>16px</option>
+                        <option value="18">18px</option>
+                        <option value="20">20px</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
         
         {activeTab === 'backup' && (

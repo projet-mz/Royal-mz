@@ -52,13 +52,13 @@ export function MainLayout({ children, className }: MainLayoutProps) {
               </p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:gap-6">
-              <a href="#" className="text-sm text-white/80 hover:text-white">
+              <a href="/privacy-policy" className="text-sm text-white/80 hover:text-white">
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
+              <a href="/terms-of-service" className="text-sm text-white/80 hover:text-white">
                 Terms of Service
               </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
+              <a href="/contact-us" className="text-sm text-white/80 hover:text-white">
                 Contact Us
               </a>
             </div>
@@ -67,4 +67,4 @@ export function MainLayout({ children, className }: MainLayoutProps) {
       </footer>
     </div>
   );
-}    
+}        
