@@ -1,4 +1,4 @@
-export type UserRole = 'admin' | 'teacher' | 'student' | 'parent';
+export type UserRole = 'admin' | 'teacher' | 'student' | 'parent' | 'security';
 
 export interface User {
   id: string;
@@ -135,4 +135,4 @@ export interface Message {
   read: boolean;
   createdAt: Date;
   updatedAt: Date;
-}  
+}    

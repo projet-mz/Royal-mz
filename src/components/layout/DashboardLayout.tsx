@@ -10,7 +10,7 @@ import { useAuth } from '../../lib/context/AuthContext';
 interface DashboardLayoutProps {
   children: ReactNode;
   className?: string;
-  role: UserRole;
+  role: UserRole | 'security';
 }
 
 export function DashboardLayout({ children, className, role }: DashboardLayoutProps) {
@@ -25,6 +25,8 @@ export function DashboardLayout({ children, className, role }: DashboardLayoutPr
     { title: 'Classes', href: '/admin/classes', icon: 'BookOpen' },
     { title: 'Timetable', href: '/admin/timetable', icon: 'Calendar' },
     { title: 'Fees', href: '/admin/fees', icon: 'DollarSign' },
+    { title: 'Security Portal', href: '/admin/security', icon: 'Shield' },
+    { title: 'Consultations', href: '/admin/consultations', icon: 'MessageSquare' },
     { title: 'Settings', href: '/admin/settings', icon: 'Settings' },
   ];
   
@@ -52,7 +54,18 @@ export function DashboardLayout({ children, className, role }: DashboardLayoutPr
     { title: 'Grades', href: '/parent/grades', icon: 'Award' },
     { title: 'Attendance', href: '/parent/attendance', icon: 'CheckSquare' },
     { title: 'Fees', href: '/parent/fees', icon: 'DollarSign' },
+    { title: 'Security', href: '/parent/security', icon: 'Shield' },
     { title: 'Communication', href: '/parent/messages', icon: 'MessageSquare' },
+  ];
+  
+  const securityNavItems = [
+    { title: 'Dashboard', href: '/security', icon: 'Home' },
+    { title: 'Checkpoints', href: '/security/checkpoints', icon: 'Shield' },
+    { title: 'Student Check-in/out', href: '/security/check-in-out', icon: 'UserCheck' },
+    { title: 'Guardian Verification', href: '/security/guardians', icon: 'Users' },
+    { title: 'Incidents', href: '/security/incidents', icon: 'AlertTriangle' },
+    { title: 'Alerts', href: '/security/alerts', icon: 'Bell' },
+    { title: 'Reports', href: '/security/reports', icon: 'FileText' },
   ];
   
   const navItems = role === 'admin' 
@@ -61,7 +74,9 @@ export function DashboardLayout({ children, className, role }: DashboardLayoutPr
       ? teacherNavItems 
       : role === 'student' 
         ? studentNavItems 
-        : parentNavItems;
+        : role === 'security'
+          ? securityNavItems
+          : parentNavItems;
   
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -186,4 +201,4 @@ export function DashboardLayout({ children, className, role }: DashboardLayoutPr
       </div>
     </div>
   );
-}           
+}                                            
