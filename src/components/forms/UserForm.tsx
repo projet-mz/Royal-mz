@@ -124,7 +124,6 @@ export function UserForm({
               id="firstName"
               placeholder="Enter first name"
               {...register('firstName')}
-              error={errors.firstName?.message as string}
             />
             {errors.firstName && (
               <p className="text-xs text-destructive">{errors.firstName.message as string}</p>

@@ -131,7 +131,7 @@ export default function TeacherMaterialsPage() {
     return matchesSearch && matchesSubject && matchesClass;
   });
   
-  const getMaterialTypeIcon = (type) => {
+  const getMaterialTypeIcon = (type: string) => {
     switch (type) {
       case 'Lesson Plan':
         return (
@@ -172,7 +172,7 @@ export default function TeacherMaterialsPage() {
     }
   };
   
-  const getFormatIcon = (format) => {
+  const getFormatIcon = (format: string) => {
     switch (format) {
       case 'PDF':
         return (

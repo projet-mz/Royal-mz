@@ -127,7 +127,7 @@ export default function AdminFeesPage() {
     pending: mockPayments.filter(p => p.status === 'Pending').length
   };
   
-  const getStudentPaymentStatus = (studentId) => {
+  const getStudentPaymentStatus = (studentId: string) => {
     const studentPayments = mockPayments.filter(p => p.studentId === studentId);
     const totalPaid = studentPayments.reduce((acc, p) => acc + p.amount, 0);
     const totalToPay = mockFees.reduce((acc, f) => acc + f.amount, 0);
@@ -433,12 +433,16 @@ export default function AdminFeesPage() {
             <CardContent>
               <div className="space-y-4">
                 {(() => {
-                  const methodCounts = mockPayments.reduce((acc, payment) => {
+                  interface MethodCounts {
+                    [key: string]: number;
+                  }
+                  
+                  const methodCounts: MethodCounts = mockPayments.reduce((acc, payment) => {
                     if (payment.method) {
                       acc[payment.method] = (acc[payment.method] || 0) + 1;
                     }
                     return acc;
-                  }, {});
+                  }, {} as MethodCounts);
                   
                   const totalWithMethod = Object.values(methodCounts).reduce((a, b) => (a as number) + (b as number), 0) as number;
                   

@@ -14,6 +14,7 @@ import { useAuth } from '../../lib/context/AuthContext';
 import { Alert, AlertDescription, AlertTitle } from '../../components/ui/alert';
 import { Loader2, User, BookOpen, Users, Home, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ParticleBackground } from '../../components/ui/particle-background';
 
 import { 
   isValidStudentId, 
@@ -163,33 +164,7 @@ export default function LoginPage() {
       >
         {/* Particle background effect */}
         <div className="absolute inset-0 bg-white/80 backdrop-blur-sm">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute h-2 w-2 rounded-full bg-primary-200"
-              animate={{
-                x: [
-                  Math.random() * window.innerWidth,
-                  Math.random() * window.innerWidth,
-                ],
-                y: [
-                  Math.random() * window.innerHeight,
-                  Math.random() * window.innerHeight,
-                ],
-                scale: [0.5, 1, 0.5],
-                opacity: [0.2, 0.5, 0.2],
-              }}
-              transition={{
-                duration: 10 + Math.random() * 20,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                x: mousePosition.x / 20 - i * 5,
-                y: mousePosition.y / 20 - i * 5,
-              }}
-            />
-          ))}
+          <ParticleBackground mousePosition={mousePosition} />
         </div>
         
         <motion.div 
@@ -408,4 +383,4 @@ export default function LoginPage() {
       </div>
     </MainLayout>
   );
-}                                            
+}                                                                    

@@ -133,7 +133,7 @@ export default function StudentMaterialsPage() {
   
   const materialTypes = [...new Set(mockMaterials.map(material => material.type))];
   
-  const getMaterialTypeIcon = (type) => {
+  const getMaterialTypeIcon = (type: string) => {
     switch (type) {
       case 'Textbook':
         return (
@@ -174,7 +174,7 @@ export default function StudentMaterialsPage() {
     }
   };
   
-  const getFormatIcon = (format) => {
+  const getFormatIcon = (format: string) => {
     switch (format) {
       case 'PDF':
         return (

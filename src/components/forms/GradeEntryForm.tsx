@@ -25,7 +25,7 @@ const gradeSchema = z.object({
     z.object({
       id: z.string(),
       name: z.string(),
-      score: z.number().min(0, 'Score must be a positive number').max(z.number().optional(), 'Score cannot exceed maximum score'),
+      score: z.number().min(0, 'Score must be a positive number'),
       comment: z.string().optional(),
     })
   ),

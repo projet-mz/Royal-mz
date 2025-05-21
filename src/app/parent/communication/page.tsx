@@ -206,7 +206,7 @@ export default function ParentCommunicationPage() {
     event.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'high':
         return 'bg-destructive/10 text-destructive';
@@ -219,7 +219,7 @@ export default function ParentCommunicationPage() {
     }
   };
   
-  const getCategoryColor = (category) => {
+  const getCategoryColor = (category: string) => {
     switch (category) {
       case 'Sports':
         return 'bg-success/10 text-success';
@@ -236,7 +236,7 @@ export default function ParentCommunicationPage() {
     }
   };
   
-  const formatDate = (date) => {
+  const formatDate = (date: Date) => {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const yesterday = new Date(today);

@@ -52,13 +52,13 @@ export default function AdminTimetablePage() {
     item.day === selectedDay
   );
   
-  const getTimetableEntry = (classId, slot) => {
+  const getTimetableEntry = (classId: string, slot: number) => {
     return filteredTimetable.find(item => 
       item.classId === classId && item.slot === slot
     );
   };
   
-  const getClassTimetable = (classId) => {
+  const getClassTimetable = (classId: string) => {
     return timeSlots.map((timeSlot, index) => {
       const entry = getTimetableEntry(classId, index);
       return {
