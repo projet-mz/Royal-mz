@@ -1,0 +1,21 @@
+{
+  "name": "Amarck Royal International School",
+  "short_name": "Amarck Royal",
+  "description": "School Management System for Amarck Royal International School",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F3460",
+  "theme_color": "#0F3460",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
