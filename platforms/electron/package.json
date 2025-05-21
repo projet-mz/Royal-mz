@@ -1,0 +1,41 @@
+{
+  "name": "@royal-mz/desktop",
+  "version": "1.0.0",
+  "description": "Amarck Royal School Management System - Desktop",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"tsc -w\" \"electron .\"",
+    "build": "tsc && electron-builder",
+    "build:win": "tsc && electron-builder --win",
+    "build:mac": "tsc && electron-builder --mac",
+    "build:linux": "tsc && electron-builder --linux"
+  },
+  "dependencies": {
+    "@royal-mz/shared": "1.0.0",
+    "@supabase/supabase-js": "^2.49.7",
+    "electron-store": "^8.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.2",
+    "electron-builder": "^24.9.1",
+    "typescript": "^5.3.3"
+  },
+  "build": {
+    "appId": "com.amarckroyal.desktop",
+    "productName": "Amarck Royal School Management",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    }
+  }
+}
