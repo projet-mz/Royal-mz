@@ -1,21 +1,14 @@
 /** @type {import('next').NextConfig} */
-const { getSecurityHeaders } = require('./src/lib/security/csp');
-
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
   async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: getSecurityHeaders(),
-      },
-    ];
+    return [];
   },
   
   images: {
-    domains: ['yjpgggnltnomvvvugoni.supabase.co'],
+    domains: ['yjpgggnltnomvvvugoni.supabase.co', 'images.unsplash.com'],
   },
   
   env: {
@@ -24,4 +17,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;      

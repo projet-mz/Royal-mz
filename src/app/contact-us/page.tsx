@@ -1,14 +1,18 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MainLayout } from '../../components/layout/MainLayout';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
-import { useAuth } from '../../lib/context/AuthContext';
-import { Skeleton } from '../../components/ui/skeleton';
-import { Alert, AlertDescription, AlertTitle } from '../../components/ui/alert';
+import { PublicWebsiteLayout } from '@/components/layout/PublicWebsiteLayout';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useAuth } from '@/lib/context/AuthContext';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion } from 'framer-motion';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { supabase } from '@/lib/supabase/client';
+import { Loader2, Mail, Phone, MapPin } from 'lucide-react';
 
 interface ContactInfo {
   schoolName: string;
@@ -28,7 +32,16 @@ interface ContactInfo {
   };
   officeHours: string;
   emergencyContact: string;
+  location: {
+    lat: number;
+    lng: number;
+  };
 }
+
+const mapContainerStyle = {
+  width: '100%',
+  height: '400px',
+};
 
 export default function ContactUsPage() {
   const { user } = useAuth();
@@ -49,11 +62,11 @@ export default function ContactUsPage() {
         const defaultInfo: ContactInfo = {
           schoolName: 'Amarck Royal International School',
           address: '123 Education Lane',
-          city: 'Knowledge City',
-          state: 'Learning State',
+          city: 'Accra',
+          state: 'Greater Accra',
           zipCode: '12345',
-          country: 'United States',
-          phone: '+1 (123) 456-7890',
+          country: 'Ghana',
+          phone: '+233 123 456 789',
           email: 'info@amarckroyal.edu',
           website: 'www.amarckroyal.edu',
           socialMedia: {
@@ -63,7 +76,11 @@ export default function ContactUsPage() {
             linkedin: 'https://linkedin.com/company/amarckroyal',
           },
           officeHours: 'Monday - Friday: 8:00 AM - 4:30 PM',
-          emergencyContact: '+1 (123) 456-7899',
+          emergencyContact: '+233 987 654 321',
+          location: {
+            lat: 5.6037,
+            lng: -0.1870,
+          },
         };
         
         setContactInfo(defaultInfo);
@@ -122,17 +139,53 @@ export default function ContactUsPage() {
   const handleContactFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError(null);
+    setLoading(true);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const formData = new FormData(e.target as HTMLFormElement);
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const phone = formData.get('phone') as string;
+      const subject = formData.get('subject') as string;
+      const message = formData.get('message') as string;
+      
+      const { error: insertError } = await supabase
+        .from('consultations')
+        .insert([
+          {
+            name,
+            email,
+            phone,
+            subject,
+            message,
+            status: 'new',
+            created_at: new Date().toISOString(),
+          },
+        ]);
+        
+      if (insertError) throw insertError;
+      
       setFormSubmitted(true);
     } catch (error) {
+      console.error('Error submitting consultation:', error);
       setFormError('There was an error submitting your message. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <MainLayout>
+    <PublicWebsiteLayout>
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+          <p className="text-xl max-w-2xl mx-auto">
+            We'd love to hear from you. Reach out with any questions about admissions, programs, or general inquiries.
+          </p>
+        </div>
+      </section>
+      
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -540,19 +593,26 @@ export default function ContactUsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-gray-200 rounded-md flex items-center justify-center" role="img" aria-label="Map showing school location">
-                  <div className="text-center p-4">
-                    <p className="text-gray-500 mb-2">Interactive map would be displayed here</p>
-                    <p className="text-sm text-gray-400">
-                      Showing location of {contactInfo?.schoolName} at {contactInfo?.address}, {contactInfo?.city}, {contactInfo?.state}
-                    </p>
-                  </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <LoadScript googleMapsApiKey="YOUR_API_KEY">
+                    <GoogleMap
+                      mapContainerStyle={mapContainerStyle}
+                      center={contactInfo?.location}
+                      zoom={15}
+                    >
+                      {contactInfo?.location && <Marker position={contactInfo.location} />}
+                    </GoogleMap>
+                  </LoadScript>
+                </div>
+                <div className="mt-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Office Hours</h3>
+                  <p className="text-gray-600">{contactInfo?.officeHours}</p>
                 </div>
               </CardContent>
             </Card>
           </motion.div>
         )}
       </motion.div>
-    </MainLayout>
+    </PublicWebsiteLayout>
   );
 }

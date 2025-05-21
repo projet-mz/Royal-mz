@@ -10,6 +10,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SecurityMonitor } from '@/components/security/SecurityMonitor';
+import { supabase } from '@/lib/supabase/client';
+import Link from 'next/link';
 
 export default function AdminDashboard() {
   const [students, setStudents] = useState<Student[]>([]);
@@ -17,6 +19,7 @@ export default function AdminDashboard() {
   const [parents, setParents] = useState<Parent[]>([]);
   const [classes, setClasses] = useState<Class[]>([]);
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [consultations, setConsultations] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -24,12 +27,13 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [studentsRes, teachersRes, parentsRes, classesRes, announcementsRes] = await Promise.all([
+        const [studentsRes, teachersRes, parentsRes, classesRes, announcementsRes, consultationsRes] = await Promise.all([
           getUsersByRole('student'),
           getUsersByRole('teacher'),
           getUsersByRole('parent'),
           getClasses(),
-          getRecentAnnouncementsForUser('admin', 5)
+          getRecentAnnouncementsForUser('admin', 5),
+          supabase.from('consultations').select('*').eq('status', 'new')
         ]);
         
         if (studentsRes.data) setStudents(studentsRes.data as Student[]);
@@ -37,6 +41,7 @@ export default function AdminDashboard() {
         if (parentsRes.data) setParents(parentsRes.data as Parent[]);
         if (classesRes.data) setClasses(classesRes.data as Class[]);
         if (announcementsRes.data) setAnnouncements(announcementsRes.data as Announcement[]);
+        if (consultationsRes.data) setConsultations(consultationsRes.data);
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
       } finally {
@@ -74,7 +79,7 @@ export default function AdminDashboard() {
           </TabsList>
           
           <TabsContent value="overview" className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
               <div className="rounded-lg border bg-card p-6">
                 <h3 className="text-lg font-semibold">Total Students</h3>
                 {loading ? (
@@ -107,6 +112,21 @@ export default function AdminDashboard() {
                   <p className="text-3xl font-bold">{classes.length}</p>
                 )}
               </div>
+              <Link href="/admin/consultations" className="rounded-lg border bg-card p-6 hover:bg-accent/10 transition-colors">
+                <h3 className="text-lg font-semibold">New Consultations</h3>
+                {loading ? (
+                  <Skeleton className="h-8 w-16" />
+                ) : (
+                  <div className="flex items-center">
+                    <p className="text-3xl font-bold">{consultations.length}</p>
+                    {consultations.length > 0 && (
+                      <span className="ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-white">
+                        {consultations.length}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </Link>
             </div>
             
             <div className="grid gap-6 md:grid-cols-2">
@@ -245,4 +265,4 @@ export default function AdminDashboard() {
       </div>
     </DashboardLayout>
   );
-}   
+}           

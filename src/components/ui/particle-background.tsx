@@ -13,25 +13,25 @@ export function ParticleBackground({
   particleCount = 20 
 }: ParticleBackgroundProps) {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
+  const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    setMounted(true);
+    
+    const handleResize = () => {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight
       });
-      
-      const handleResize = () => {
-        setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight
-        });
-      };
-      
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
+    };
+    
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
+  if (!mounted) return null;
   
   return (
     <>
