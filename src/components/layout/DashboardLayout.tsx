@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '../../lib/utils';
 import { UserRole } from '../../lib/types';
 import { useAuth } from '../../lib/context/AuthContext';
+import { NotificationBell } from '../ui/notifications';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -119,6 +120,7 @@ export function DashboardLayout({ children, className, role }: DashboardLayoutPr
             <span className="hidden sm:inline-block font-medium">
               {role.charAt(0).toUpperCase() + role.slice(1)} Dashboard
             </span>
+            <NotificationBell />
             <button
               onClick={() => logout()}
               className="rounded-md bg-primary-foreground/10 px-3 py-2 md:px-4 md:py-2 text-sm font-medium hover:bg-primary-foreground/20 button-3d"
@@ -201,4 +203,4 @@ export function DashboardLayout({ children, className, role }: DashboardLayoutPr
       </div>
     </div>
   );
-}                                            
+}                                                                                        

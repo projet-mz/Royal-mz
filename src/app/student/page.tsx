@@ -7,9 +7,13 @@ import { getGradesByStudent } from '@/services/grades';
 import { getAttendanceByStudent } from '@/services/attendance';
 import { getClassById } from '@/services/classes';
 import { getSubjectById } from '@/services/subjects';
+import { getStudentAchievements, getStudentLeaderboard } from '@/services/achievements';
 import { StudentInterface } from '@/components/age-calibrated/StudentInterface';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Grade, Attendance, Class, Subject, Student } from '@/lib/types';
+import { Award, Trophy, TrendingUp, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function StudentDashboard() {
   const { user } = useAuth();
@@ -17,6 +21,8 @@ export default function StudentDashboard() {
   const [attendance, setAttendance] = useState<Attendance[]>([]);
   const [classes, setClasses] = useState<Record<string, Class>>({});
   const [subjects, setSubjects] = useState<Record<string, Subject>>({});
+  const [achievements, setAchievements] = useState<any[]>([]);
+  const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [studentData, setStudentData] = useState<Student | null>(null);
 
@@ -35,6 +41,12 @@ export default function StudentDashboard() {
         
         const { data: attendanceData } = await getAttendanceByStudent(user.id);
         if (attendanceData) setAttendance(attendanceData as Attendance[]);
+        
+        const { data: achievementsData } = await getStudentAchievements(user.id);
+        if (achievementsData) setAchievements(achievementsData);
+        
+        const { data: leaderboardData } = await getStudentLeaderboard(5);
+        if (leaderboardData) setLeaderboard(leaderboardData);
         
         const classIds = new Set<string>();
         const subjectIds = new Set<string>();
@@ -209,9 +221,90 @@ export default function StudentDashboard() {
                 </div>
               </div>
             </div>
+            
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-lg font-semibold flex items-center">
+                  <Award className="mr-2 h-5 w-5 text-primary" />
+                  Your Achievements
+                </h3>
+                <div className="mt-4">
+                  {loading ? (
+                    <>
+                      <Skeleton className="h-16 w-full" />
+                      <Skeleton className="h-16 w-full" />
+                    </>
+                  ) : achievements.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">No achievements yet. Keep up the good work!</p>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-4">
+                      {achievements.slice(0, 4).map((achievement: any) => (
+                        <div key={achievement.id} className="flex flex-col items-center p-3 border rounded-lg bg-muted/20">
+                          <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-2">
+                            <Star className="h-6 w-6 text-primary" />
+                          </div>
+                          <p className="text-sm font-medium text-center">{achievement.achievement.name}</p>
+                          <p className="text-xs text-muted-foreground text-center mt-1">{achievement.achievement.description}</p>
+                          <p className="text-xs text-primary mt-2">+{achievement.pointsEarned} points</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {achievements.length > 4 && (
+                    <div className="mt-4 text-center">
+                      <Link href="/student/achievements" passHref>
+                        <Button variant="link" size="sm">View All Achievements</Button>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-lg font-semibold flex items-center">
+                  <Trophy className="mr-2 h-5 w-5 text-primary" />
+                  Leaderboard
+                </h3>
+                <div className="mt-4">
+                  {loading ? (
+                    <>
+                      <Skeleton className="h-16 w-full" />
+                      <Skeleton className="h-16 w-full" />
+                    </>
+                  ) : leaderboard.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">Leaderboard data not available.</p>
+                  ) : (
+                    <div className="space-y-4">
+                      {leaderboard.map((student: any, index: number) => (
+                        <div key={student.id} className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <div className={`h-8 w-8 rounded-full flex items-center justify-center mr-3 ${
+                              index === 0 ? 'bg-yellow-100 text-yellow-600' :
+                              index === 1 ? 'bg-gray-100 text-gray-600' :
+                              index === 2 ? 'bg-amber-100 text-amber-600' :
+                              'bg-muted text-muted-foreground'
+                            }`}>
+                              {index + 1}
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium">{student.firstName} {student.lastName}</p>
+                              <p className="text-xs text-muted-foreground">{student.grade} • {student.class}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                            <TrendingUp className="h-4 w-4 text-primary mr-1" />
+                            <span className="font-medium">{student.achievementPoints}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </StudentInterface>
       )}
     </DashboardLayout>
   );
-}  
+}        
