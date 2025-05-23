@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,7 +14,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: 'url("/images/ELLA MAIN.jpg")',
+            backgroundImage: 'url("/images/school-hero.jpg")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             filter: 'brightness(0.7)'
@@ -123,7 +125,7 @@ export default function Home() {
                 className="rounded-lg overflow-hidden shadow-xl relative z-10"
               >
                 <Image
-                  src="/images/ELLA MAIN.jpg"
+                  src="/images/school-hero.jpg"
                   alt="Students at Amarck Royal"
                   width={600}
                   height={400}
@@ -181,7 +183,7 @@ export default function Home() {
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 ),
-                image: "/images/lab activity.jpg"
+                image: "/images/lab.jpg"
               },
               {
                 title: "State-of-the-Art Facilities",
@@ -189,7 +191,7 @@ export default function Home() {
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                 ),
-                image: "/images/ACTIVITY.jpg"
+                image: "/images/activity1.jpg"
               },
               {
                 title: "Qualified Faculty",
@@ -197,7 +199,7 @@ export default function Home() {
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 ),
-                image: "/images/friday sports.jpg"
+                image: "/images/sports.jpg"
               },
               {
                 title: "Holistic Development",
@@ -205,7 +207,7 @@ export default function Home() {
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/></svg>
                 ),
-                image: "/images/traditional .jpg"
+                image: "/images/traditional.jpg"
               }
             ].map((feature, idx) => (
               <motion.div 
@@ -344,4 +346,4 @@ export default function Home() {
       </section>
     </PublicWebsiteLayout>
   );
-}                                      
+}                                                    
