@@ -5,19 +5,31 @@ import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   
-  const cspHeader = 
-    "default-src 'self'; " +
-    "script-src 'self'; " +
-    "style-src 'self'; " +
-    "img-src 'self' data:; " +
-    "font-src 'self' data:; " +
-    "connect-src 'self' https://yjpgggnltnomvvvugoni.supabase.co; " +
-    "frame-ancestors 'none'; " +
-    "form-action 'self'; " +
-    "base-uri 'self'; " +
-    "object-src 'none';";
-  
-  res.headers.set('Content-Security-Policy', cspHeader);
+  if (process.env.NODE_ENV === 'production') {
+    const cspHeader = 
+      "default-src 'self'; " +
+      "script-src 'self'; " +
+      "style-src 'self'; " +
+      "img-src 'self' data:; " +
+      "font-src 'self' data:; " +
+      "connect-src 'self' https://yjpgggnltnomvvvugoni.supabase.co; " +
+      "frame-ancestors 'none'; " +
+      "form-action 'self'; " +
+      "base-uri 'self'; " +
+      "object-src 'none';";
+    
+    res.headers.set('Content-Security-Policy', cspHeader);
+  } else {
+    const devCspHeader = 
+      "default-src * 'unsafe-inline' 'unsafe-eval'; " +
+      "script-src * 'unsafe-inline' 'unsafe-eval'; " +
+      "connect-src * 'unsafe-inline'; " +
+      "img-src * data: blob: 'unsafe-inline'; " +
+      "frame-src *; " +
+      "style-src * 'unsafe-inline';";
+    
+    res.headers.set('Content-Security-Policy', devCspHeader);
+  }
   res.headers.set('X-Content-Type-Options', 'nosniff');
   res.headers.set('X-Frame-Options', 'DENY');
   res.headers.set('X-XSS-Protection', '1; mode=block');
