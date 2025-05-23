@@ -31,7 +31,7 @@ export function PublicWebsiteLayout({ children }: PublicWebsiteLayoutProps) {
   
   const navItems = [
     { title: 'Home', href: '/' },
-    { title: 'About Us', href: '/about' },
+    { title: 'About Us', href: '/about-us' },
     { title: 'Academics', href: '/academics' },
     { title: 'Admissions', href: '/admissions' },
     { title: 'Facilities', href: '/facilities' },
