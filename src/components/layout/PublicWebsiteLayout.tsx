@@ -151,10 +151,10 @@ export function PublicWebsiteLayout({ children }: PublicWebsiteLayoutProps) {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <address className="text-gray-400 not-italic">
-              <p>123 School Avenue</p>
-              <p>Accra, Ghana</p>
-              <p className="mt-2">Email: info@amarckroyal.edu</p>
-              <p>Phone: +233 123 456 789</p>
+              <p>Lashibi, Sakumono Estate</p>
+              <p>Tema Metropolitan, Greater Accra Region, Ghana</p>
+              <p className="mt-2">Email: info@amarckroyal.edu.gh</p>
+              <p>Phone: +233 302 96 90 82</p>
             </address>
           </div>
           <div>
