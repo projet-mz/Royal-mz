@@ -1,91 +1,46 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { PublicWebsiteLayout } from '@/components/layout/PublicWebsiteLayout';
+import { PublicWebsiteLayout } from '../../components/layout/PublicWebsiteLayout';
 import Image from 'next/image';
 
 export default function AboutUsPage() {
   return (
     <PublicWebsiteLayout>
       {/* Hero Section */}
-      <section className="relative py-20 bg-primary/5">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <motion.h1 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl font-bold text-gray-800 mb-6"
-              >
-                About Amarck Royal International School
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-gray-600 mb-6"
-              >
-                Amarck Royal International School is a premier educational institution located in Lashibi, Sakumono Estate, Tema Metropolitan, Greater Accra Region, Ghana. We are committed to providing a well-rounded education that balances intellectual development with character development.
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-lg text-gray-600"
-              >
-                Our comprehensive academic program spans from kindergarten to junior high, offering students a strong foundation in core subjects while also nurturing their talents in computer education, French language instruction, and various extracurricular activities.
-              </motion.p>
-            </div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="relative h-[400px] rounded-lg overflow-hidden shadow-xl"
-            >
-              <Image 
-                src="/images/ELLA MAIN.jpg" 
-                alt="Amarck Royal International School Students" 
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+      <section className="relative py-20 bg-gradient-to-r from-primary to-secondary">
+        <div className="container mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Amarck Royal</h1>
+          <p className="text-xl max-w-2xl mx-auto">
+            Nurturing Excellence, Building Character, Shaping the Future
+          </p>
         </div>
       </section>
 
       {/* Mission & Vision */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Mission & Vision</h2>
-            <div className="w-20 h-1 bg-primary mx-auto"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
-              <p className="text-gray-600 text-center">
-                To provide a nurturing educational environment that fosters academic excellence, character development, and a global perspective, empowering students to become responsible citizens and future leaders.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 text-primary">Our Mission</h2>
+              <p className="text-gray-600 mb-8">
+                At Amarck Royal International School, our mission is to provide a holistic education that nurtures academic excellence, character development, and global citizenship. We are committed to creating a supportive learning environment where students can discover their unique talents, develop critical thinking skills, and become compassionate leaders ready to make a positive impact in the world.
+              </p>
+              
+              <h2 className="text-3xl font-bold mb-6 text-primary">Our Vision</h2>
+              <p className="text-gray-600">
+                Our vision is to be a leading educational institution that inspires a lifelong love of learning, fosters innovation, and cultivates ethical leadership. We aspire to produce well-rounded graduates who are intellectually curious, culturally aware, and equipped with the knowledge, skills, and values needed to thrive in an ever-changing global society.
               </p>
             </div>
             
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">Our Vision</h3>
-              <p className="text-gray-600 text-center">
-                To be recognized as a leading educational institution that inspires a lifelong love of learning, cultivates critical thinking, and prepares students to thrive in a rapidly changing global society.
-              </p>
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/ELLA MAIN.jpg"
+                alt="Amarck Royal International School"
+                fill
+                style={{ objectFit: 'cover' }}
+                className="rounded-lg"
+              />
             </div>
           </div>
         </div>
@@ -95,120 +50,80 @@ export default function AboutUsPage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Core Values</h2>
-            <div className="w-20 h-1 bg-primary mx-auto"></div>
+            <h2 className="text-3xl font-bold mb-4 text-gray-800">Our Core Values</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              These fundamental principles guide our approach to education and shape our school culture.
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">Excellence</h3>
+              <h3 className="text-xl font-semibold mb-3 text-center text-gray-800">Excellence</h3>
               <p className="text-gray-600 text-center">
                 We strive for excellence in all aspects of education, encouraging students to reach their highest potential academically, socially, and personally.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">Integrity</h3>
+              <h3 className="text-xl font-semibold mb-3 text-center text-gray-800">Integrity</h3>
               <p className="text-gray-600 text-center">
-                We uphold the highest standards of honesty, ethics, and responsibility, fostering a community built on trust and mutual respect.
+                We uphold the highest standards of honesty, ethics, and responsibility, teaching students to act with integrity in all situations.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">Global Perspective</h3>
+              <h3 className="text-xl font-semibold mb-3 text-center text-gray-800">Global Citizenship</h3>
               <p className="text-gray-600 text-center">
-                We embrace diversity and cultivate a global mindset, preparing students to thrive in an interconnected world and contribute positively to society.
+                We foster an understanding and appreciation of diverse cultures, preparing students to be responsible global citizens.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* School History */}
+      {/* Our History */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-[400px] rounded-lg overflow-hidden shadow-xl"
-            >
-              <Image 
-                src="/images/school activity.jpg" 
-                alt="Amarck Royal International School History" 
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-2 md:order-1">
+              <Image
+                src="/images/school activity.jpg"
+                alt="Amarck Royal International School History"
                 fill
-                className="object-cover"
+                style={{ objectFit: 'cover' }}
+                className="rounded-lg"
               />
-            </motion.div>
-            
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">Our History</h2>
-              <div className="w-20 h-1 bg-primary mb-6"></div>
-              <p className="text-lg text-gray-600 mb-4">
-                Amarck Royal International School was founded with a vision to provide quality education that nurtures both academic excellence and character development. Since our establishment, we have grown to become one of the leading educational institutions in the Greater Accra Region.
-              </p>
-              <p className="text-lg text-gray-600 mb-4">
-                Our journey has been marked by a commitment to educational innovation, cultural diversity, and holistic development. We have continuously evolved our curriculum and teaching methodologies to meet the changing needs of our students and prepare them for future success.
-              </p>
-              <p className="text-lg text-gray-600">
-                Today, Amarck Royal International School stands as a testament to our dedication to educational excellence, with a vibrant community of students, teachers, and parents working together to create a nurturing learning environment.
-              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Faculty & Staff */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Faculty & Staff</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our dedicated team of educators and support staff are committed to providing a nurturing and stimulating learning environment for all students.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6">
-                <h3 className="font-bold text-xl mb-2">Experienced Educators</h3>
-                <p className="text-gray-600">
-                  Our teachers are highly qualified professionals with extensive experience in their respective fields. They are passionate about education and dedicated to helping each student reach their full potential.
+            
+            <div className="order-1 md:order-2">
+              <h2 className="text-3xl font-bold mb-6 text-primary">Our History</h2>
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  Amarck Royal International School was founded in 2005 with a vision to provide quality education that combines academic excellence with character development. Starting with just 50 students and 5 teachers in a small building, our school has grown significantly over the years.
                 </p>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6">
-                <h3 className="font-bold text-xl mb-2">Supportive Administration</h3>
-                <p className="text-gray-600">
-                  Our administrative team works tirelessly to ensure the smooth operation of the school and to create an environment where learning can flourish. They are always available to address the needs of students, parents, and staff.
+                <p>
+                  In 2010, we expanded our campus to accommodate our growing student population and introduced additional programs in science, technology, arts, and sports. Our commitment to holistic education has remained unwavering throughout our journey.
                 </p>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6">
-                <h3 className="font-bold text-xl mb-2">Dedicated Support Staff</h3>
-                <p className="text-gray-600">
-                  From our security personnel to our maintenance team, every member of our staff plays a vital role in creating a safe, clean, and welcoming environment for our school community.
+                <p>
+                  By 2015, Amarck Royal had established itself as one of the leading educational institutions in the region, known for its academic rigor, innovative teaching methods, and strong community values. We introduced international exchange programs and partnerships with schools around the world.
+                </p>
+                <p>
+                  Today, we continue to build on our rich heritage while embracing modern educational approaches and technologies. Our state-of-the-art facilities, dedicated faculty, and diverse student body create a dynamic learning environment where every student can thrive.
                 </p>
               </div>
             </div>
@@ -217,18 +132,17 @@ export default function AboutUsPage() {
       </section>
 
       {/* Contact Information */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800">Contact Us</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
               We welcome your inquiries and look forward to hearing from you. Feel free to reach out to us using the contact information below.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -243,7 +157,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -251,11 +165,12 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">Phone</h3>
               <p className="text-gray-600 text-center">
-                +233 302 96 90 82
+                <a href="tel:+233302969082" className="hover:text-primary transition-colors">+233 302 96 90 82</a><br />
+                <span className="text-sm">Monday - Friday: 8:00 AM - 4:30 PM</span>
               </p>
             </div>
             
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -263,7 +178,8 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">Email</h3>
               <p className="text-gray-600 text-center">
-                info@amarckroyal.edu.gh
+                <a href="mailto:info@amarckroyal.edu.gh" className="hover:text-primary transition-colors">info@amarckroyal.edu.gh</a><br />
+                <a href="https://www.amarckroyal.edu.gh" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">www.amarckroyal.edu.gh</a>
               </p>
             </div>
           </div>

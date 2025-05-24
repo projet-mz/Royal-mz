@@ -594,15 +594,16 @@ export default function ContactUsPage() {
               </CardHeader>
               <CardContent>
                 <div className="rounded-lg overflow-hidden shadow-lg">
-                  <LoadScript googleMapsApiKey="YOUR_API_KEY">
-                    <GoogleMap
-                      mapContainerStyle={mapContainerStyle}
-                      center={contactInfo?.location}
-                      zoom={15}
-                    >
-                      {contactInfo?.location && <Marker position={contactInfo.location} />}
-                    </GoogleMap>
-                  </LoadScript>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.587906824373!2d-0.05488742501430401!3d5.6276874943533945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf874037588795%3A0xc2efc85e93269293!2sArmack%20Royal%20international%20school!5e0!3m2!1sen!2sgh!4v1748052920362!5m2!1sen!2sgh" 
+                    width="100%" 
+                    height="450" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-md"
+                  ></iframe>
                 </div>
                 <div className="mt-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Office Hours</h3>
