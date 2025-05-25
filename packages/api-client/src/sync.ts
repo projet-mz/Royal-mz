@@ -5,7 +5,7 @@ import {
   ConflictResolutionStrategy,
   SyncStateOptions,
   SyncStateMetadata
-} from '@royal-mz/shared-types';
+} from '../../shared-types/src';
 
 export class SyncEngine {
   private state: any = {};
