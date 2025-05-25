@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Student, TemporaryAuthorization } from '@royal-mz/shared-types';
+import { Student, TemporaryAuthorization } from '../../../shared-types/src';
 
 interface ParentAuthorizationProps {
   securityService: any;
@@ -46,7 +46,7 @@ export const ParentAuthorization: React.FC<ParentAuthorizationProps> = ({
         
         setAuthorizations(authData);
       } catch (err) {
-        setError(err.message);
+        setError(err instanceof Error ? err.message : String(err));
       }
     };
     
@@ -116,14 +116,14 @@ export const ParentAuthorization: React.FC<ParentAuthorizationProps> = ({
         onAuthorizationCreated(data);
       }
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
     } finally {
       setLoading(false);
     }
   };
   
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
+  const formatDate = (dateInput: string | Date) => {
+    const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput;
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
   
