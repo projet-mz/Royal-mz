@@ -145,15 +145,17 @@ export class PerformanceMonitor {
     const metrics = this.getMetrics();
     const recording = this.getRecording();
     
-    const slowOperations = Object.entries(metrics)
+    const metricsEntries = metrics ? Object.entries(metrics) : [];
+    
+    const slowOperations = metricsEntries
       .filter(([_, metric]) => metric.averageTime > 100) // Operations taking more than 100ms on average
       .sort((a, b) => b[1].averageTime - a[1].averageTime);
     
-    const frequentOperations = Object.entries(metrics)
+    const frequentOperations = metricsEntries
       .filter(([_, metric]) => metric.count > 10) // Operations called more than 10 times
       .sort((a, b) => b[1].count - a[1].count);
     
-    const bottlenecks = Object.entries(metrics)
+    const bottlenecks = metricsEntries
       .sort((a, b) => b[1].totalTime - a[1].totalTime);
     
     const concurrentOperations: { name1: string; name2: string; overlapCount: number }[] = [];
