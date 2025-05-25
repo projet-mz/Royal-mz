@@ -20,7 +20,7 @@ export class BiometricAuth {
           return { available: false, biometryType: 'none', error: 'Unsupported platform' };
       }
     } catch (error) {
-      return { available: false, biometryType: 'none', error: error.message };
+      return { available: false, biometryType: 'none', error: error instanceof Error ? error.message : String(error) };
     }
   }
   
@@ -38,7 +38,7 @@ export class BiometricAuth {
         error: available ? undefined : 'Platform authenticator not available'
       };
     } catch (error) {
-      return { available: false, biometryType: 'none', error: error.message };
+      return { available: false, biometryType: 'none', error: error instanceof Error ? error.message : String(error) };
     }
   }
   
@@ -76,7 +76,7 @@ export class BiometricAuth {
         error: result.error || undefined
       };
     } catch (error) {
-      return { available: false, biometryType: 'none', error: error.message };
+      return { available: false, biometryType: 'none', error: error instanceof Error ? error.message : String(error) };
     }
   }
   
@@ -93,7 +93,7 @@ export class BiometricAuth {
           return { success: false, error: 'Unsupported platform' };
       }
     } catch (error) {
-      return { success: false, error: error.message };
+      return { success: false, error: error instanceof Error ? error.message : String(error) };
     }
   }
   
@@ -119,7 +119,7 @@ export class BiometricAuth {
       
       return { success: !!credential, error: credential ? undefined : 'Authentication failed' };
     } catch (error) {
-      return { success: false, error: error.message };
+      return { success: false, error: error instanceof Error ? error.message : String(error) };
     }
   }
   
@@ -152,7 +152,7 @@ export class BiometricAuth {
         error: result.error || undefined
       };
     } catch (error) {
-      return { success: false, error: error.message };
+      return { success: false, error: error instanceof Error ? error.message : String(error) };
     }
   }
 }
