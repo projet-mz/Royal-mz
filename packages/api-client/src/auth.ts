@@ -1,5 +1,5 @@
 import { SupabaseClient } from '@supabase/supabase-js';
-import { UserSession, User } from '@royal-mz/shared-types';
+import { UserSession, User } from '../../shared-types/src';
 
 export class AuthManager {
   private supabase: SupabaseClient;
