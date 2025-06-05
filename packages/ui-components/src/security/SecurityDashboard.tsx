@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SecurityDashboardStats, SecurityAlert, StudentCheckpoint } from '@royal-mz/shared-types';
+import { SecurityDashboardStats, SecurityAlert, StudentCheckpoint } from '../../../shared-types/src';
 
 interface SecurityDashboardProps {
   securityService: any;
@@ -49,7 +49,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({
         
         setCheckpoints(checkpointsData);
       } catch (err) {
-        setError(err);
+        setError(err instanceof Error ? err : new Error(String(err)));
       } finally {
         setLoading(false);
       }
