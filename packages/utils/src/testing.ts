@@ -26,7 +26,7 @@ export class TestUtilities {
       return true;
     } catch (error) {
       const endTime = performance.now();
-      this.testResults.set(name, { passed: false, message: error.message, duration: endTime - startTime });
+      this.testResults.set(name, { passed: false, message: error instanceof Error ? error.message : String(error), duration: endTime - startTime });
       
       console.error(`❌ Test failed: ${name} (${Math.round(endTime - startTime)}ms)`);
       console.error(error);
