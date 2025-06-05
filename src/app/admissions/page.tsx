@@ -33,12 +33,14 @@ export default function AdmissionsPage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button 
-              size="lg"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
-              Apply Now
-            </Button>
+            <Link href="/admissions/apply">
+              <Button 
+                size="lg"
+                className="bg-white text-primary hover:bg-gray-100"
+              >
+                Apply Now
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -244,12 +246,14 @@ export default function AdmissionsPage() {
             Start your application process today and take the first step toward a quality education for your child.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
-              Apply Online
-            </Button>
+            <Link href="/admissions/apply">
+              <Button 
+                size="lg"
+                className="bg-white text-primary hover:bg-gray-100"
+              >
+                Apply Online
+              </Button>
+            </Link>
             <Link href="/contact-us">
               <Button 
                 variant="outline" 
