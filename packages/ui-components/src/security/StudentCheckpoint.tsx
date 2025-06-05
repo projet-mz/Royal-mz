@@ -4,7 +4,7 @@ import {
   SecurityCheckpoint, 
   AuthorizedGuardian,
   VerificationMethod
-} from '@royal-mz/shared-types';
+} from '../../../shared-types/src';
 
 interface StudentCheckpointProps {
   securityService: any;
@@ -48,7 +48,7 @@ export const StudentCheckpoint: React.FC<StudentCheckpointProps> = ({
           setSelectedCheckpoint(data[0].id);
         }
       } catch (err) {
-        setError('Failed to fetch checkpoints: ' + err.message);
+        setError('Failed to fetch checkpoints: ' + (err instanceof Error ? err.message : String(err)));
       }
     };
     
@@ -91,10 +91,10 @@ export const StudentCheckpoint: React.FC<StudentCheckpointProps> = ({
       
       setGuardians(guardiansData);
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
       setStudent(null);
       setGuardians([]);
-    } finally {
+    }finally {
       setLoading(false);
     }
   };
@@ -121,7 +121,7 @@ export const StudentCheckpoint: React.FC<StudentCheckpointProps> = ({
       
       return true;
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
       return false;
     }
   };
@@ -179,8 +179,8 @@ export const StudentCheckpoint: React.FC<StudentCheckpointProps> = ({
         onCheckpointComplete(data);
       }
     } catch (err) {
-      setError(err.message);
-    } finally {
+      setError(err instanceof Error ? err.message : String(err));
+    }finally {
       setLoading(false);
     }
   };
