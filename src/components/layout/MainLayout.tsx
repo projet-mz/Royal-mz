@@ -16,31 +16,20 @@ export function MainLayout({ children, className }: MainLayoutProps) {
               <span className="text-lg md:text-xl font-bold text-white">Amarck Royal</span>
             </a>
           </div>
+          <nav className="hidden md:flex items-center space-x-6 ml-8">
+            <a href="/about" className="text-white/80 hover:text-white">About</a>
+            <a href="/academics" className="text-white/80 hover:text-white">Academics</a>
+            <a href="/admissions" className="text-white/80 hover:text-white">Admissions</a>
+            <a href="/contact" className="text-white/80 hover:text-white">Contact</a>
+          </nav>
           <div className="ml-auto flex items-center space-x-2 md:space-x-4">
-            <a 
-              href="/login" 
-              className="rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90 md:px-4 button-3d"
-            >
-              Login
+            <a href="/contact" className="button-3d bg-accent text-white px-4 py-2 rounded">
+              Get In Touch
             </a>
           </div>
         </div>
       </header>
       <main className="container mx-auto px-4 md:px-6 py-4 md:py-8 flex-1">
-        <div className="card-3d p-6 mb-8">
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Welcome to Amarck Royal International School</h1>
-          <p className="text-secondary text-lg mb-6">A premier educational institution serving students from Creche to JHS 3</p>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="dashboard-card">
-              <h2 className="text-xl font-heading font-semibold mb-3 text-primary">Excellence in Education</h2>
-              <p className="text-secondary">Our curriculum is designed to nurture academic excellence while developing well-rounded individuals ready for the challenges of tomorrow.</p>
-            </div>
-            <div className="dashboard-card">
-              <h2 className="text-xl font-heading font-semibold mb-3 text-primary">Modern Facilities</h2>
-              <p className="text-secondary">State-of-the-art classrooms, laboratories, and recreational spaces provide an optimal learning environment for all students.</p>
-            </div>
-          </div>
-        </div>
         {children}
       </main>
       <footer className="gradient-primary text-white py-6 md:py-8 navbar-3d">
@@ -52,13 +41,13 @@ export function MainLayout({ children, className }: MainLayoutProps) {
               </p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:gap-6">
-              <a href="#" className="text-sm text-white/80 hover:text-white">
+              <a href="/privacy" className="text-sm text-white/80 hover:text-white">
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
+              <a href="/terms" className="text-sm text-white/80 hover:text-white">
                 Terms of Service
               </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
+              <a href="/contact" className="text-sm text-white/80 hover:text-white">
                 Contact Us
               </a>
             </div>
@@ -67,4 +56,4 @@ export function MainLayout({ children, className }: MainLayoutProps) {
       </footer>
     </div>
   );
-}    
+}        

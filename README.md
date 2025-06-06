@@ -1,108 +1,120 @@
-# Amarck Royal International School Management System
+# Amarck Royal International School - Website
 
-A modern, user-friendly educational management system for Amarck Royal International School, serving students from creche to JHS 3.
+A modern, responsive website for Amarck Royal International School built with Next.js 14 and TypeScript.
+
+## Overview
+
+This is the standalone public-facing website for Amarck Royal International School, separated from the school management system for independent deployment. The website showcases the school's mission, programs, and provides essential information for prospective students and parents.
 
 ## Features
 
-- **Admin Dashboard**: Comprehensive overview of school metrics and management functions
-- **Teacher Portal**: Efficient class management and student performance tracking
-- **Student Portal**: Age-appropriate interfaces for different grade levels
-- **Parent Portal**: Multi-child dashboard for monitoring academic progress
+- **Responsive Design**: Optimized for all device sizes (mobile, tablet, desktop)
+- **Modern UI**: Clean, professional design with 3D styling effects
+- **Static Generation**: Pre-rendered pages for optimal performance
+- **Contact Form**: Functional contact form for inquiries
+- **SEO Optimized**: Proper meta tags and structure
 
-## Tech Stack
+## Pages
 
-- **Frontend**: Next.js 14 (App Router) with TypeScript
-- **UI Framework**: Tailwind CSS with shadcn/ui components
-- **State Management**: React Context API
-- **Form Handling**: React Hook Form with Zod validation
-- **Mock Data**: Static JSON data for frontend development
+- **Home**: Welcome page with school overview and key features
+- **About**: School mission, vision, values, and history
+- **Academics**: Academic programs and curriculum information
+- **Admissions**: Admission process and requirements
+- **Contact**: Contact information and inquiry form
+- **Privacy Policy**: Data privacy and protection policy
+- **Terms of Service**: Website terms and conditions
+
+## Technology Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with custom 3D effects
+- **Icons**: Radix UI Icons and Lucide React
+- **Deployment**: Optimized for Vercel
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18.0.0 or later
-- npm 9.0.0 or later
+- Node.js 18+ 
+- npm or yarn
 
 ### Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/amarck-royal.git
-   cd amarck-royal
-   ```
+```bash
+git clone https://github.com/projet-mz/Royal-mz.git
+cd Royal-mz
+git checkout royal-web
+```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+3. Run the development server:
+```bash
+npm run dev
+```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Deployment to Vercel
+
+This website is optimized for deployment on Vercel:
+
+1. **Connect Repository**: Link your GitHub repository to Vercel
+2. **Configure Build**: Vercel will automatically detect Next.js configuration
+3. **Deploy**: Push to the `royal-web` branch to trigger deployment
+
+### Build Commands
+
+- **Development**: `npm run dev`
+- **Build**: `npm run build`
+- **Start**: `npm run start`
+- **Lint**: `npm run lint`
 
 ## Project Structure
 
 ```
 src/
-├── app/                    # Next.js app router pages
-│   ├── admin/             # Admin portal pages
-│   ├── teacher/           # Teacher portal pages
-│   ├── student/           # Student portal pages
-│   └── parent/            # Parent portal pages
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
+├── app/                    # Next.js App Router pages
+│   ├── about/             # About page
+│   ├── academics/         # Academics page
+│   ├── admissions/        # Admissions page
+│   ├── contact/           # Contact page
+│   ├── privacy/           # Privacy policy
+│   ├── terms/             # Terms of service
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Home page
+│   └── globals.css        # Global styles
+├── components/            # Reusable components
 │   ├── layout/           # Layout components
-│   ├── forms/            # Form components
-│   └── charts/           # Data visualization components
-├── lib/                  # Utility functions and types
-│   ├── utils/           # Helper functions
-│   ├── types/           # TypeScript type definitions
-│   └── hooks/           # Custom React hooks
-├── styles/              # Global styles
-└── data/               # Mock data for development
+│   └── ContactForm.tsx   # Contact form component
+└── lib/                  # Utilities and types
+    └── types/            # TypeScript type definitions
 ```
 
-## Development
+## Customization
 
-### Code Style
+### Styling
+- Colors and themes are defined in `tailwind.config.js`
+- Custom 3D effects are in `src/app/globals.css`
+- Component styles use Tailwind CSS classes
 
-- Follow the TypeScript strict mode guidelines
-- Use functional components with hooks
-- Implement proper type checking throughout
-- Follow the established component architecture
+### Content
+- Update page content in respective files under `src/app/`
+- Modify contact information in `src/app/contact/page.tsx`
+- Update school branding in `src/components/layout/MainLayout.tsx`
 
-### Component Architecture
+## Contact Information
 
-- Build reusable UI components with clear props interfaces
-- Implement proper component composition
-- Create logical component hierarchy
-- Use consistent naming conventions
-
-### State Management
-
-- Use React Context API for shared state
-- Implement reducers for complex state logic
-- Maintain clear state initialization and updates
-- Handle loading and error states properly
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+**Amarck Royal International School**
+- Address: 123 Education Avenue, Accra, Ghana
+- Phone: +233 20 123 4567
+- Email: info@amarckroyal.edu.gh
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Next.js team for the amazing framework
-- Tailwind CSS team for the utility-first CSS framework
-- shadcn/ui team for the beautiful component library 
+This project is private and proprietary to Amarck Royal International School.   
